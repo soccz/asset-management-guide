@@ -413,6 +413,17 @@ $$
 
 ## 7. Conditional Autoencoder — 비선형 노출 (Gu, Kelly & Xiu 2021)
 
+### 7-0. 신경망 구조 한눈에
+
+![Conditional Autoencoder (Gu·Kelly·Xiu 2021)](figures/chB1_autoencoder.png)
+
+> **그림 읽는 법** —
+> - **좌측 β network**: 자산 특성 z (B/M, momentum 등) → ReLU hidden → 잠재 노출 β (비선형 매핑).
+> - **우측 factor network**: 자산 수익률 R → ReLU hidden → 잠재 팩터 f (비선형 추출).
+> - **가운데 결합**: $\hat{R} = \beta^T \cdot f$ (β와 f의 내적이 예측 수익률).
+> - **학습**: 두 네트워크를 같은 손실 $\sum_t \|R_t - \hat{R}_t\|^2$로 동시 학습.
+> - 핵심: IPCA(B1 §6)는 β = z'·Γ로 **선형** 매핑인 반면, CAE는 β = NN(z)로 **비선형** 매핑 → 더 풍성한 노출 표현.
+
 ### 7-1. IPCA의 한계
 
 IPCA는 자산 특성에서 팩터 노출로의 **선형 매핑**을 가정한다 ($\beta_{i,t} = z_{i,t}'\Gamma_\beta$).
