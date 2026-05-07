@@ -7,24 +7,27 @@ import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 from _setup import plt, np, save
 
-# 카테고리별 논문 수 + 색
+# 카테고리별 논문 수 + 색 (실제 11단원 16편 기준 정확 분류)
 categories = [
-    ("모멘텀 (TS·XS·크래시)", 6, "#1f6feb"),
-    ("BAB / 저베타",           3, "#d62728"),
-    ("ML 자산가격결정",        3, "#9467bd"),
-    ("가치·사이즈 (FF3)",      2, "#2ca02c"),
-    ("리스크패리티",           1, "#ff9900"),
-    ("효율적 시장 비판",        1, "#8c564b"),
+    ("모멘텀 (TS·XS·크래시·잔차·CMM)", 5, "#1f6feb"),
+    ("ML 자산가격결정",              5, "#9467bd"),
+    ("BAB / 저베타",                  3, "#d62728"),
+    ("한국 시장",                     2, "#ff9900"),
+    ("리스크패리티",                  1, "#2ca02c"),
 ]
 
-# 분야 → 단원 매핑
+# 분야 → 단원 매핑 (정확)
 mapping = [
-    ("모멘텀",         "9, 10, 13",   "Lewellen, Barroso, Daniel,\nMoskowitz, Blitz, Beckmeyer"),
-    ("BAB / 저베타",   "14",           "Frazzini, Novy-Marx, Xu"),
-    ("ML",             "B1, 11",       "Kelly, Beckmeyer, Xu"),
-    ("가치·사이즈",    "8",             "Fama-French, Novy-Marx"),
-    ("리스크패리티",    "5",             "Qian"),
-    ("효율적 시장 비판","6, 11",         "Blitz"),
+    ("모멘텀",      "9, 10, 13",
+     "Lewellen 2002, Barroso 2015,\nMoskowitz 2012, Blitz 2011, Beckmeyer 2025"),
+    ("ML",          "B1",
+     "Kelly 2021, Kozak 2020,\nKelly 2019, Gu·Kelly·Xiu 2021, Deng 2024"),
+    ("BAB / 저베타","14",
+     "Frazzini 2014, Novy-Marx 2022, Xu 2025"),
+    ("한국 시장",    "9, 14",
+     "Saejoon Kim 2021, 2023"),
+    ("리스크패리티", "5",
+     "Qian 2011"),
 ]
 
 fig, axes = plt.subplots(1, 2, figsize=(15, 7),
