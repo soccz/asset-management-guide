@@ -213,6 +213,25 @@ $$1 = E[m \cdot R_i]$$
 
 > **비유:** SDF $m$은 **"만능 할인기계"**와 같다. 어떤 자산의 미래 수익률을 이 기계에 넣으면, 할인된 값의 평균이 항상 정확히 1이 나온다. 이 기계가 모든 자산에 대해 작동한다는 것이 핵심이다. 마치 하나의 번역기가 모든 언어를 번역할 수 있는 것처럼, 하나의 $m$이 모든 자산의 가격을 설명한다.
 
+```mermaid
+flowchart LR
+    A1["자산 1<br/>(주식)"] --> SDF
+    A2["자산 2<br/>(채권)"] --> SDF
+    A3["자산 3<br/>(원자재)"] --> SDF
+    A4["..."] --> SDF
+    AN["자산 N<br/>(어떤 것이든)"] --> SDF
+    SDF["SDF m_t<br/>(만능 할인기계)<br/>E[m·R_i] = 1"] --> Out["모든 자산 가격<br/>일관되게 결정"]
+    
+    classDef asset fill:#e3f2fd,stroke:#1565c0,color:#000
+    classDef sdf fill:#fff3e0,stroke:#e65100,color:#000,stroke-width:3px
+    classDef out fill:#e8f5e9,stroke:#2e7d32,color:#000
+    class A1,A2,A3,A4,AN asset
+    class SDF sdf
+    class Out out
+```
+
+> **그림 읽는 법** — 시장에 자산이 N개 있는데, 그 모두를 동시에 가격결정하는 단 하나의 객체 $m_t$ 가 SDF다. 자산이 1억 개여도 여전히 $m_t$는 하나뿐. 이 사실의 강력함이 자산가격결정 이론의 핵심.
+
 ### 5-4. SDF를 알면 왜 모든 문제가 풀리는가?
 
 $E[m \cdot R_i] = 1$을 다르게 쓰면:
