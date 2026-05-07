@@ -65,6 +65,40 @@ l6.pdf p.3은 SDF 추정의 본질적 난점을 명시한다.
 
 ## 2. 단원 흐름도
 
+### 2-1. 큰 그림 — ML 자산가격결정 워크플로우
+
+```mermaid
+graph LR
+    DATA["자산 패널 데이터<br/>특성 z + 수익률 R"]
+    KNS["§5 KNS<br/>선형 SDF<br/>m_t = 1 − b'(F_t − μ)"]
+    IPCA["§6 IPCA<br/>잠재 팩터<br/>β_t = z_t' Γ"]
+    CAE["§7 Conditional<br/>Autoencoder<br/>비선형 z → β"]
+    DENG["§8 Deng 2024<br/>대규모 최적화<br/>ridge-penalized MV"]
+    EVAL["§9 모형 비교<br/>샤프 · α · OOS R²"]
+    NEXT["§10 → B2 단원<br/>스펙트럴 클러스터링"]
+    DATA --> KNS
+    DATA --> IPCA
+    DATA --> CAE
+    DATA --> DENG
+    KNS --> EVAL
+    IPCA --> EVAL
+    CAE --> EVAL
+    DENG --> EVAL
+    EVAL --> NEXT
+    style DATA fill:#fef3c7,stroke:#d97706,stroke-width:2px
+    style KNS fill:#dbeafe,stroke:#1d4ed8
+    style IPCA fill:#dcfce7,stroke:#15803d
+    style CAE fill:#fce7f3,stroke:#be185d
+    style DENG fill:#e0e7ff,stroke:#4338ca
+    style EVAL fill:#f3f4f6,stroke:#374151,stroke-width:2px
+    style NEXT fill:#fee2e2,stroke:#b91c1c
+```
+
+→ **하나의 자산 데이터**에서 **네 가지 ML 접근**으로 SDF/팩터를 추정하고,
+  **공통 평가 기준**(샤프·α·아웃샘플 R²)으로 비교한 뒤, B2단원의 자산 군집화로 이어진다.
+
+### 2-2. 자세한 단계별 흐름
+
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                         B1단원 전체 로드맵                                │
