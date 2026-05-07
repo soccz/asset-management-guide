@@ -56,6 +56,7 @@ ax.set_xlabel("연도", fontsize=11)
 ax.set_ylabel("누적수익 ($1 시작, 로그 스케일)", fontsize=11)
 ax.legend(loc="upper left", fontsize=10.5)
 ax.set_xlim(0, T/12 + 4)
+ax.set_ylim(0.7, max(cum_xs.max(), cum_ts.max()) * 2)
 
 # (b) 핵심 차이 요약 표
 ax = axes[1]
