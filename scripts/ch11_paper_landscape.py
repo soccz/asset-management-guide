@@ -48,20 +48,21 @@ ax.text(0, 0.08, f"{total}", ha="center", va="center",
 ax.text(0, -0.16, "P A P E R S", ha="center", va="center",
         fontsize=10, color="#666")
 
-# 외곽 라벨
+# 외곽 라벨 (도넛 안 침범 방지 — radius 1.45)
 for i, (label, size, color) in enumerate(categories):
     ang = (sum(sizes[:i]) + size / 2) / total * 360
     rad = np.radians(90 - ang)
-    x, y = 1.18 * np.cos(rad), 1.18 * np.sin(rad)
+    x, y = 1.45 * np.cos(rad), 1.45 * np.sin(rad)
+    ha = "left" if x > 0.05 else ("right" if x < -0.05 else "center")
     ax.text(x, y,
             f"{label}\n{size}편",
-            ha="center", va="center", fontsize=10,
+            ha=ha, va="center", fontsize=10,
             color=color, fontweight="bold")
 
 ax.set_title("(a) 16편 논문의 분야별 분포",
              fontsize=12.5, pad=18)
-ax.set_xlim(-1.5, 1.5)
-ax.set_ylim(-1.5, 1.5)
+ax.set_xlim(-2.0, 2.0)
+ax.set_ylim(-1.7, 1.7)
 ax.axis("off")
 
 # (b) 분야 → 단원 매핑 테이블

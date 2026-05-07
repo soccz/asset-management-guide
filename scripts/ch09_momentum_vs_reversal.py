@@ -16,16 +16,17 @@ T = 600  # 50년 월별
 months = np.arange(T)
 years = months / 12
 
-# 단기반전 — 안정적 작은 alpha
-reversal_short = rng.normal(0.0045, 0.022, T)
-# 중기모멘텀 — 강한 alpha + 두 번 크래시 (1932/2009 정성적 재현)
-momentum_mid = rng.normal(0.010, 0.040, T)
+# 단기반전 — 안정적 작은 alpha (월 0.3% ≈ 연 3.7%)
+reversal_short = rng.normal(0.003, 0.020, T)
+# 중기모멘텀 — 가장 강한 alpha + 두 번 크래시
+# (월 1.2% ≈ 연 15%, 크래시 없는 평월 기준)
+momentum_mid = rng.normal(0.012, 0.038, T)
 crash_1 = slice(195, 200)  # 약 16년차
 crash_2 = slice(485, 490)  # 약 40년차
 momentum_mid[crash_1] = [-0.08, -0.18, -0.10, -0.04, -0.02]
 momentum_mid[crash_2] = [-0.10, -0.20, -0.08, -0.03, -0.01]
-# 장기반전 — 약한 alpha + 변동 큼
-reversal_long = rng.normal(0.005, 0.034, T)
+# 장기반전 — 중간 alpha + 변동 큼 (월 0.5% ≈ 연 6%)
+reversal_long = rng.normal(0.005, 0.030, T)
 
 cum_rev_s = np.cumprod(1 + reversal_short)
 cum_mom_m = np.cumprod(1 + momentum_mid)

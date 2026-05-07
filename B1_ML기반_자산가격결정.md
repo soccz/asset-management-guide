@@ -70,8 +70,8 @@ l6.pdf p.3은 SDF 추정의 본질적 난점을 명시한다.
 ```mermaid
 graph LR
     DATA["자산 패널 데이터<br/>특성 z + 수익률 R"]
-    KNS["§5 KNS<br/>선형 SDF<br/>m_t = 1 − b'(F_t − μ)"]
-    IPCA["§6 IPCA<br/>잠재 팩터<br/>β_t = z_t' Γ"]
+    KNS["§5 KNS<br/>선형 SDF<br/>m_t = 1 − bᵀ(F_t − μ)"]
+    IPCA["§6 IPCA<br/>잠재 팩터<br/>β_t = z_tᵀ Γ"]
     CAE["§7 Conditional<br/>Autoencoder<br/>비선형 z → β"]
     DENG["§8 Deng 2024<br/>대규모 최적화<br/>ridge-penalized MV"]
     EVAL["§9 모형 비교<br/>샤프 · α · OOS R²"]
